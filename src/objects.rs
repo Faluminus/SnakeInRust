@@ -1,14 +1,16 @@
 pub mod objects{
-    struct Objects{
+    pub struct Objects{
         length:i32,
         snake:bool,
         wall:bool
     }
     impl Objects{
-        pub fn new(&mut self , length:i32){
-            self.length = length;
-            self.snake = false;
-            self.wall = false;
+        pub fn new(length:i32) -> Objects{
+            Objects {
+                length,
+                snake: false,
+                wall: false,
+            }
         }
         pub fn colision_check(&mut self,colide:char,apple_preset:char,wall_preset:char,snake_preset:char){
             if colide==apple_preset{
