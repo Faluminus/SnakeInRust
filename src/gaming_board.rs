@@ -47,15 +47,10 @@ pub mod gaming_board{
             self.map.insert(self.apple,space_preset);
 
             let mut random = rand::thread_rng();
-            loop{
-                let location:i32= random.gen_range(1..self.width * self.height - self.width);
-                if self.width % location != 1 && self.width % location != 0 {
-                    self.map.remove(&location);
-                    self.map.insert(location,apple_preset);
-                    self.apple = location;
-                    break;
-                }
-            }
+            let location:i32= random.gen_range(1..(self.width-2) * (self.height-2));
+            self.map.remove(&location);
+            self.map.insert(location,apple_preset);
+            self.apple = location;
         }
     }
 }
