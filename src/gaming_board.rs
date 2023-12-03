@@ -3,6 +3,7 @@ pub mod gaming_board{
     use std::collections::HashMap;
     use rand::Rng;
 
+
     pub struct Board{
         map:HashMap<i32,char>,
         apple:i32,
@@ -18,7 +19,7 @@ pub mod gaming_board{
                 height:0
             }
         }
-        pub fn create(&mut self, width:i32,height:i32,wall_preset:char,space_preset:char){
+        pub fn create(&mut self, width:i32,height:i32){
             self.width = width;
             self.height = height;
 
@@ -28,7 +29,7 @@ pub mod gaming_board{
             let mut map:HashMap<i32,char> = HashMap::new();
             for i in 1..self.width*self.height{
                 if i == 1 || self.width==i {
-                    map.insert(i,wall_preset);
+                    map.insert(i,wall_tprese);
                     if self.width== i{
                         height += 1;
                     }
