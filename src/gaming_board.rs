@@ -12,14 +12,16 @@ mod gaming_board{
             self.width = width;
             self.height = height;
 
+            width.drop();
             height.drop();
+
             let mut height = 0;
 
             let mut map:HashMap<i32,char> = HashMap::new();
             for i in 0..self.width*self.height{
-                if i == 0 || width==i {
+                if i == 0 || self.width==i {
                     map.insert(i,wall_preset);
-                    if width== i{
+                    if self.width== i{
                         height += 1;
                     }
                 }else{

@@ -1,5 +1,3 @@
-mod objects;
-
 
 mod snake{
 
