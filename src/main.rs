@@ -8,7 +8,6 @@ fn main(){
     gaming_board.create(20,20,'#',' ');
 
 
-
 }
 
 

@@ -14,9 +14,9 @@ pub mod objects{
         }
         pub fn colision_check(&mut self,colide:char,apple_preset:char,wall_preset:char,snake_preset:char){
             if colide==apple_preset{
-                self.apple_fn();
+                self.eat_apple();
             }else if colide==wall_preset{
-                self.wall_fn();
+                self.kiss_wall();
             }else if colide==snake_preset{
                 self.twist_your_neck();
             }
