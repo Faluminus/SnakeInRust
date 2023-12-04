@@ -2,6 +2,7 @@ pub mod gaming_board{
     use std::collections::HashMap;
     use rand::Rng;
     use crate::objects;
+    use crate::snake;
 
 
     pub struct Board{
@@ -68,8 +69,8 @@ pub mod gaming_board{
             self.apple = *self.no_walls.get_mut(&location).unwrap();
             self.map.get_mut(&self.apple).unwrap().apple();
         }
-        pub fn snake_location_calculation(){
-
+        pub fn snake_location_calculation(snake_:snake::snake::Snake){
+           let object =  snake_.snake_location_memorised();
         }
     }
 }

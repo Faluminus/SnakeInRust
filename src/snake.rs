@@ -1,5 +1,5 @@
-mod snake{
-    struct Snake{
+pub mod snake{
+    pub struct Snake{
         length:i32,
         head_y:i32,
         head_x:i32,
