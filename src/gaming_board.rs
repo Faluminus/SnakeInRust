@@ -67,6 +67,8 @@ pub mod gaming_board{
             let location:i32= random.gen_range(1..(self.width-2) * (self.height-2));
             self.apple = *self.no_walls.get_mut(&location).unwrap();
             self.map.get_mut(&self.apple).unwrap().apple();
+        }
+        pub fn snake_location_calculation(){
 
         }
     }
