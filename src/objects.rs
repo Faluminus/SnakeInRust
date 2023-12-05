@@ -4,6 +4,7 @@ pub mod objects{
         snake:bool,
         wall:bool,
         empty:bool,
+        direction:i32,
         apple_preset:char,
         snake_preset:char,
         wall_preset:char,
@@ -16,6 +17,7 @@ pub mod objects{
                 snake: false,
                 wall: false,
                 empty: false,
+                direction: 2,
                 apple_preset,
                 snake_preset,
                 wall_preset,
@@ -46,8 +48,29 @@ pub mod objects{
             self.snake = true;
             self.empty = false;
         }
+        pub fn direction(&mut self,direction_code:i32){
+            self.direction = direction_code;
+        }
+        pub fn return_direction(&self) -> i32{
+            self.direction
+        }
+        pub fn colision(&self) -> i32{
+            let death_code:i32 = 101;
+            let growth_code:i32 = 100;
+            let continue_code:i32 = 0;
+            if self.snake ==true || self.wall == true{
+                death_code
+            }
+            else if self.apple {
+                growth_code
+            }else{
+                continue_code
+            }
+        }
         pub fn write_on_console(self){
-            if self.apple == true{
+            if self.empty == true{
+                print!("{}",self.empty_preset);
+            }else if self.apple == true{
                 print!("{}",self.apple_preset);
             }else if self.snake == true{
                 print!("{}",self.snake_preset);
