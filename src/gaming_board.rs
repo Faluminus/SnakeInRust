@@ -44,22 +44,21 @@ pub mod gaming_board{
             let mut height = 1;
 
             //map with walls
-            let mut map:HashMap<i32,objects::objects::Objects> = HashMap::new();
             for i in 1..self.width*self.height {
                 let mut object = objects::objects::Objects::new(apple_preset, snake_preset, wall_preset, empty_preset);
                 if i == 1 || self.width == i {
                     object.wall();
-                    map.insert(i, object);
+                    self.map.insert(i, object);
                     if self.width == i {
                         height += 1;
                     }
                 } else {
                     if height == 1 || height == self.height {
                         object.wall();
-                        map.insert(i, object);
+                        self.map.insert(i, object);
                     } else {
                         object.empty();
-                        map.insert(i, object);
+                        self.map.insert(i, object);
                     }
                 }
             }
