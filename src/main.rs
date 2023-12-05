@@ -2,9 +2,11 @@ mod gaming_board;
 mod objects;
 use std::io;use std::time::Duration;
 use std::thread::sleep;
+use stopwatch2;
 
 
 fn main() {
+
     let mut board = gaming_board::gaming_board::Board::new();
     let mut action_code = 0;
     board.create_board(20, 20, '*', '#', 'o', ' ');
@@ -46,7 +48,6 @@ fn main() {
             }
         }
         println!();
-
     }
 
 }
