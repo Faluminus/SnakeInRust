@@ -45,6 +45,7 @@ fn main() {
                 eprintln!("Error: {}", error);
             }
         }
+        println!();
 
     }
 
