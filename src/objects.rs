@@ -67,7 +67,7 @@ pub mod objects{
                 continue_code
             }
         }
-        pub fn write_on_console(self){
+        pub fn write_on_console(&self){
             if self.empty == true{
                 print!("{}",self.empty_preset);
             }else if self.apple == true{

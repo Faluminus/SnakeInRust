@@ -5,10 +5,14 @@ fn main() {
     let mut board = gaming_board::gaming_board::Board::new();
     let mut action_code = 0;
     board.create_board(20, 20, '*', '#', 'o', ' ');
+    board.apple_spawn();
     loop {
         if action_code == 100 {
            board.apple_spawn()
         }
+        board.snake_move_on();
+        board.snake_cleanup();
+        action_code = board.asses_action();
         let mut input = String::new();
         match io::stdin().read_line(&mut input) {
             Ok(_) => {
@@ -34,9 +38,6 @@ fn main() {
                 eprintln!("Error: {}", error);
             }
         }
-        board.snake_move_on();
-        board.snake_cleanup();
-        action_code = board.asses_action();
         board.reset();
     }
 

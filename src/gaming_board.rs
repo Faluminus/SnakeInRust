@@ -163,9 +163,9 @@ pub mod gaming_board{
                 }
             }
         }
-        pub fn reset(self){
+        pub fn reset(&self){
             io::stdout().flush().unwrap();
-            for map in self.map{
+            for map in &self.map{
                 map.1.write_on_console();
                 if map.0 % self.width == 0{
                     println!()
