@@ -144,20 +144,22 @@ pub mod gaming_board{
                 _=> panic!()
             }
         }
-        pub fn asses_action(&mut self){
+        pub fn asses_action(&mut self) -> i32{
             match self.action_code{
                 101 => {
                     io::stdout().flush().unwrap();
                     println!("You died");
+                    101
                 }
                 100 =>{
                     self.snake_length += 1;
+                    100
                 }
                 0 => {
-
+                    0
                 }
                 _ => {
-
+                    2000
                 }
             }
         }
