@@ -66,7 +66,7 @@ pub mod gaming_board{
             //map with no walls
             let mut counter = 1;
             for i in 0..self.width*self.height {
-                if i > self.width && i < self.width{
+                if i > self.width && i < self.width*self.height - self.width{
                     if i != self.width +1 && i != self.width -1{
                         self.no_walls.insert(counter,i);
                         counter += 1;
