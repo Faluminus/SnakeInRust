@@ -37,7 +37,7 @@ pub mod gaming_board{
             self.height = height;
 
             //snake spawnpoint
-            let spawn_point:i32 = (self.width*self.height)/2;
+            let spawn_point:i32 = (self.width*self.height)/2 -self.width/2;
             self.snake_head = spawn_point;
             self.snake_tail = spawn_point + self.width;
 
@@ -46,10 +46,10 @@ pub mod gaming_board{
             //map with walls
             for i in 1..self.width*self.height {
                 let mut object = objects::objects::Objects::new(apple_preset, snake_preset, wall_preset, empty_preset);
-                if i == 1 || self.width == i {
+                if i % self.width == 1 || i % self.width == 0{
                     object.wall();
                     self.map.insert(i, object);
-                    if self.width == i {
+                    if i % self.width == 0 {
                         height += 1;
                     }
                 } else {
