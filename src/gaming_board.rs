@@ -75,8 +75,8 @@ pub mod gaming_board{
             }
         }
         pub fn apple_spawn(&mut self){
-            if self.apple != 0{
-                self.map.get_mut(&self.apple).unwrap().empty();
+            if self.apple != 0 {
+                self.map.get_mut(&self.apple).unwrap().snake_body();
             }
 
             let mut random = rand::thread_rng();
@@ -126,21 +126,23 @@ pub mod gaming_board{
         }
         pub fn snake_cleanup(&mut self){
             self.map.get_mut(&self.snake_tail).unwrap().empty();
-
-            match self.map.get_mut(&self.snake_tail).unwrap().return_direction(){
-                0 =>{
-                    self.snake_tail += self.width;
+            if self.action_code != 100
+            {
+                match self.map.get_mut(&self.snake_tail).unwrap().return_direction() {
+                    0 => {
+                        self.snake_tail += self.width;
+                    }
+                    1 => {
+                        self.snake_tail -= 1;
+                    }
+                    2 => {
+                        self.snake_tail -= self.width;
+                    }
+                    3 => {
+                        self.snake_tail += 1;
+                    }
+                    _ => panic!()
                 }
-                1 => {
-                    self.snake_tail -= 1;
-                }
-                2 => {
-                    self.snake_tail -= self.width;
-                }
-                3 => {
-                    self.snake_tail += 1;
-                }
-                _=> panic!()
             }
         }
         pub fn asses_action(&mut self) -> i32{
@@ -163,6 +165,7 @@ pub mod gaming_board{
             }
         }
         pub fn reset(&self){
+            print!("\x1B[2J");
             io::stdout().flush().unwrap();
             for i in 1..self.width * self.height{
                 self.map.get(&i).unwrap().write_on_console();
