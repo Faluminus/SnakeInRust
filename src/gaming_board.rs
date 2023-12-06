@@ -42,7 +42,7 @@ pub mod gaming_board{
             self.snake_tail = spawn_point + self.width;
 
             let mut height = 1;
-
+            let mut counter = 1;
             //map with walls
             for i in 1..self.width*self.height {
                 let mut object = objects::objects::Objects::new(apple_preset, snake_preset, wall_preset, empty_preset);
@@ -58,18 +58,10 @@ pub mod gaming_board{
                         self.map.insert(i, object);
                     } else {
                         object.empty();
-                        self.map.insert(i, object);
-                    }
-                }
-            }
-
-            //map with no walls
-            let mut counter = 1;
-            for i in 0..self.width*self.height {
-                if i > self.width && i < self.width*self.height - self.width{
-                    if i != self.width +1 && i != self.width -1{
+                        //map with no walls
                         self.no_walls.insert(counter,i);
                         counter += 1;
+                        self.map.insert(i, object);
                     }
                 }
             }
