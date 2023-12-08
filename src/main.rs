@@ -1,12 +1,14 @@
 mod gaming_board;
 mod objects;
-use std::io;use std::time::Duration;
-use std::thread::sleep;
-use stopwatch2;
+
+use std::future::IntoFuture;
+use k_board::{Keys,Keyboard};
+use std::time::Duration;
 
 
-fn main() {
 
+#[tokio::main]
+async fn main(){
     let mut board = gaming_board::gaming_board::Board::new();
     let mut action_code = 0;
     board.create_board(20, 20, '*', '#', 'o', ' ');
@@ -22,32 +24,22 @@ fn main() {
         if action_code == 101{
             break;
         }
-        let mut input = String::new();
-        match io::stdin().read_line(&mut input) {
-            Ok(_) => {
-                match input.to_lowercase().trim() {
-                    "w" => {
-                        board.snake_direction(2);
-                    }
-                    "a" => {
-                        board.snake_direction(1);
-                    }
-                    "s" => {
-                        board.snake_direction(0);
-                    }
-                    "d" => {
-                        board.snake_direction(3);
-                    }
-                    _ => {
-
-                    }
-                }
-            }
-            Err(error) => {
-                eprintln!("Error: {}", error);
-            }
-        }
+        board = keystroke( board).await;
         println!();
-    }
+        tokio::time::sleep(Duration::new(1,0)).await;
 
+    }
 }
+async fn keystroke(mut board:gaming_board::gaming_board::Board) -> gaming_board::gaming_board::Board{
+    let x = async {Keyboard::new().read_key()};
+    let a = x.into_future();
+    match a.await{
+         Keys::Up=> board.snake_direction(2),
+        Keys::Down => board.snake_direction(0),
+        Keys::Left => board.snake_direction(1),
+        Keys::Right => board.snake_direction(3),
+        _ => {}
+    };
+    board
+}
+

@@ -157,8 +157,6 @@ pub mod gaming_board{
             }
         }
         pub fn reset(&self){
-            print!("\x1B[2J");
-            io::stdout().flush().unwrap();
             for i in 1..self.width * self.height{
                 self.map.get(&i).unwrap().write_on_console();
                 if i % self.width == 0{
