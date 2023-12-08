@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 k_board = "1.1.11"
 rand = "0.8.5"
-tokio = { version = "1.33.0", features = ["full"] }
+tokio = { version = "1.34.0", features = ["full"] }
