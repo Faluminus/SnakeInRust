@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-k_board = "1.1.11"
+k_board = "1.2.1"
 rand = "0.8.5"
 tokio = { version = "1.34.0", features = ["full"] }
